@@ -82,7 +82,7 @@ class RemoteClient(object):
         try:
             logging.debug("Trying to connect to remote server %s", self.host)
             self.client.connect(self.host, port=22, username=self.user, 
-                                    passphrase=self.passphrase)
+                                    password=self.passphrase)
             self.sftpclient = self.client.open_sftp()
         except PasswordRequiredException:
             raise ClientNotSetupException('Pubkey is encrypted.')
@@ -104,7 +104,7 @@ class RemoteClient(object):
         try:
             logging.debug("Connecting to IP:%s User:%s", self.ip, self.user )
             self.client.connect(self.ip, port=22, username=self.user,
-                                passphrase=self.passphrase)
+                                password=self.passphrase)
             self.sftpclient = self.client.open_sftp()
         except PasswordRequiredException:
             raise ClientNotSetupException('Pubkey is encrypted.')
